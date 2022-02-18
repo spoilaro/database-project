@@ -54,3 +54,4 @@ create table User_UseCases(
 );
 
 create index GraphicCardsIndex on GraphicCards(name);
+create index UsersIndex on Users(username);
