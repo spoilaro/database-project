@@ -12,6 +12,7 @@ def menu() -> Any:
         "[5] See my Graphic Cards",
         "[6] See my best Card",
         "[7] Update my name",
+        "[8] Spec Graph",
 
     ]
 

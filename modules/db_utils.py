@@ -1,11 +1,9 @@
-from distutils.log import error
-from mimetypes import init
 from random import randint
 import sqlite3
 from sqlite3 import Error
-from sqlite3.dbapi2 import Cursor, connect
 import names
 import random
+from bokeh.plotting import figure, show, output_file, save
 
 
 def create_connection(db_path: str):
@@ -209,5 +207,27 @@ def update_name(connection, username, new_name):
 
     connection.commit()
     print("Name updated succesfully")
+
+def spec_graph(connection):
+    cursor = connection.cursor()
+
+    cursor.execute("select grade, model from Specs")
+    res = cursor.fetchall()
+
+    y = [row[0] for row in res]
+    x = [row[1] for row in res]
+
+    print(y)
+    print(x)
+
+    output_file(filename="Specs.html", title="Specs")
+
+    p = figure(title="Spec Graph", x_axis_label="Card Name", y_axis_label="Card Grade", x_range=x)
+    p.vbar(top=y_test, legend_label="Specs", width=0.5, bottom=0, color="red")
+
+    save(p)
+
+
+
 
 

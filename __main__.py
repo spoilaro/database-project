@@ -32,6 +32,8 @@ def main() -> None:
         elif choice == 7:
             new_name = input("Give a new name: ")
             update_name(connection, username, new_name)
+        elif choice == 8:
+            spec_graph(connection)
 
 
 if __name__ == "__main__":
