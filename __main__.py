@@ -24,7 +24,8 @@ def main() -> None:
         elif choice == 3:
             get_use_cases(connection, username)
         elif choice == 4:
-            add_new_use_case(connection, "Personal")
+            place = input("New use case place: ")
+            add_new_use_case(connection, place)
         elif choice == 5:
             get_graphiccards(connection, username)
         elif choice == 6:
