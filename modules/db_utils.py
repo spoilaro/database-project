@@ -223,7 +223,7 @@ def spec_graph(connection):
     output_file(filename="Specs.html", title="Specs")
 
     p = figure(title="Spec Graph", x_axis_label="Card Name", y_axis_label="Card Grade", x_range=x)
-    p.vbar(top=y_test, legend_label="Specs", width=0.5, bottom=0, color="red")
+    p.vbar(top=y, legend_label="Specs", width=0.5, bottom=0, color="red")
 
     save(p)
 
