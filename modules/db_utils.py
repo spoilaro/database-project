@@ -217,13 +217,11 @@ def spec_graph(connection):
     y = [row[0] for row in res]
     x = [row[1] for row in res]
 
-    print(y)
-    print(x)
-
     output_file(filename="Specs.html", title="Specs")
 
     p = figure(title="Spec Graph", x_axis_label="Card Name", y_axis_label="Card Grade", x_range=x)
-    p.vbar(top=y, legend_label="Specs", width=0.5, bottom=0, color="red")
+    p.vbar(top=y, x=x, legend_label="Specs", width=0.5, bottom=0, color="red")
+    p.xaxis.major_label_orientation = "vertical"
 
     save(p)
 
