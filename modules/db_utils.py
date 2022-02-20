@@ -127,7 +127,11 @@ def get_user_id(connection, username):
     cursor = connection.cursor()
     cursor.execute(query, (username,))
     res = cursor.fetchone()
-    return res[0]
+    try:
+       return res[0]
+    except:
+        print("No such user exists, quitting!")
+        quit()
 
 
 def get_specs(connection):
@@ -175,7 +179,6 @@ def get_graphiccards(connection, username):
     cursor = connection.cursor()
 
     u_id = get_user_id(connection, username)
-    print(u_id)
 
     query = "select name from GraphicCards where owner_id = ?"
     cursor.execute(query, (u_id,))
@@ -186,21 +189,21 @@ def get_graphiccards(connection, username):
         print(r[0])
 
 
-def get_the_highest_grade(connection, username):
+def get_the_highest_grade(connection):
     cursor = connection.cursor()
-    u_id = get_user_id(connection, username)
 
     query = """select GraphicCards.name, Specs.grade from GraphicCards
-                inner join Specs on GraphicCards.id = Specs.gpu_id where GraphicCards.owner_id = ?
-                order by Specs.grade limit 1
+                inner join Specs on GraphicCards.id = Specs.gpu_id
+                order by Specs.grade desc limit 1
                 """
 
-    cursor.execute(query, (u_id,))
+    cursor.execute(query)
 
     res = cursor.fetchall()
 
     for r in res:
-        print(r + "\n")
+        print(r)
+        print()
 
 
 def update_name(connection, username, new_name):

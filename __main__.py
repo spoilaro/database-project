@@ -29,7 +29,7 @@ def main() -> None:
         elif choice == 5:
             get_graphiccards(connection, username)
         elif choice == 6:
-            get_the_highest_grade(connection, username)
+            get_the_highest_grade(connection)
         elif choice == 7:
             new_name = input("Give a new name: ")
             update_name(connection, username, new_name)

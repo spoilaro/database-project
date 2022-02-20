@@ -10,7 +10,7 @@ def menu() -> Any:
         "[3] See My Use Cases",
         "[4] Add a new use case",
         "[5] See my Graphics Cards",
-        "[6] See my best Card",
+        "[6] See the best Card",
         "[7] Update my name",
         "[8] Save Specs as graph",
 
