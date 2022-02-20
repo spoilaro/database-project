@@ -81,9 +81,10 @@ def initilize_specs(connection, gpu, index):
 
 
 def initialize_user_use_cases(connection):
-    # TODO Implement
-    pass
+    cursor = connection.cursor()
 
+    cursor.execute("insert into User_UseCases values (50, 1), (50, 3)")
+    connection.commit()
 
 def initilize_db(connection):
     RANDOM_USER_COUNT = 50
@@ -92,6 +93,7 @@ def initilize_db(connection):
     initialize_users(connection, RANDOM_USER_COUNT)
     initilize_use_cases(connection)
     initilize_manufacturers(connection)
+    initialize_user_use_cases(connection)
 
     cursor.execute("delete from GraphicCards")
     cursor.execute("delete from sqlite_sequence where name='GraphicCards'")
@@ -116,6 +118,8 @@ def initilize_db(connection):
     cursor.execute("insert into GraphicCards (name, owner_id, manufacturer_id) values ('GeForce GTX 750', 50, 1)")
     cursor.execute("insert into GraphicCards (name, owner_id, manufacturer_id) values ('GeForce GTX 780', 50, 1)")
     connection.commit()
+
+    print("Added test data to database\n")
 
 
 def get_user_id(connection, username):
@@ -161,6 +165,7 @@ def add_new_use_case(connection, usecase_name):
     cursor = connection.cursor()
 
     cursor.execute(sql, (usecase_name,))
+
     connection.commit()
 
     print("New use case added")
@@ -195,7 +200,7 @@ def get_the_highest_grade(connection, username):
     res = cursor.fetchall()
 
     for r in res:
-        print(r)
+        print(r + "\n")
 
 
 def update_name(connection, username, new_name):
@@ -206,7 +211,7 @@ def update_name(connection, username, new_name):
     cursor.execute(q, (new_name, u_id))
 
     connection.commit()
-    print("Name updated succesfully")
+    print("Name updated succesfully\n")
 
 def spec_graph(connection):
     cursor = connection.cursor()
@@ -224,6 +229,8 @@ def spec_graph(connection):
     p.xaxis.major_label_orientation = "vertical"
 
     save(p)
+
+    print("Graph created succesfully\n")
 
 
 

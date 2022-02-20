@@ -5,14 +5,14 @@ from simple_term_menu import TerminalMenu
 def menu() -> Any:
     options = [
         "[0] Quit",
-        "[1] Initilize Database",
+        "[1] Add example data",
         "[2] Preview Specs",
         "[3] See My Use Cases",
         "[4] Add a new use case",
-        "[5] See my Graphic Cards",
+        "[5] See my Graphics Cards",
         "[6] See my best Card",
         "[7] Update my name",
-        "[8] Spec Graph",
+        "[8] Save Specs as graph",
 
     ]
 
